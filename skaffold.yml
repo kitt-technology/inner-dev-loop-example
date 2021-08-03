@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+build:
+  artifacts:
+    - image: inner-dev-loop-example
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**.go'
+            dest: .
+deploy:
+  helm:
+    releases:
+      - name: inner-dev-loop-example
+        chartPath: chart
+        artifactOverrides:
+          image: inner-dev-loop-example

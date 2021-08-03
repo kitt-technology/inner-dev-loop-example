@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inner-dev-loop-example
+spec:
+  selector:
+    matchLabels:
+      app: inner-dev-loop-example
+  template:
+    metadata:
+      labels:
+        app: inner-dev-loop-example
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: service
+          image: {{ .Values.image }}
+          ports:
+            - name: http
+              containerPort: 8080
