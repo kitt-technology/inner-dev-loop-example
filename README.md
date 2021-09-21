@@ -9,8 +9,9 @@
 
 ## Running the example
 
-1. From within the project directory, run `skaffold dev`
-2. Observe the logs from Skaffold are successful in deploying the code.
-3. Make a change to the log message in `main.go`.
-4. Observe the output in the Skaffold logs or use kubectl to inspect the pod itself.
-5. You've hot-reloaded some code in a cluster!
+1. Set an environment variable corresponding to your repository for example `REPO=gcr.io/your-google-project-id`
+2. From within the project directory, run `skaffold dev --default-repo $REPO`
+3. Observe the logs from Skaffold are successful in deploying the code.
+4. Make a change to the log message in `main.go`.
+5. Observe the output in the Skaffold logs or use kubectl to inspect the pod itself.
+6. You've hot-reloaded some code in a cluster!
